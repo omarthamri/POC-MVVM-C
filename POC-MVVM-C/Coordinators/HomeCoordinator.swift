@@ -15,8 +15,8 @@ class HomeCoordinator: NSObject,Coordinator {
     lazy var homeViewController: HomeViewController = {
            let vc = HomeViewController()
             vc.viewModel = viewModel
-            vc.showDetailRequest = { [weak self] in
-                self?.goToDetails()
+            vc.showDetailRequest = { [weak self] row in
+                self?.goToDetails(row: row)
             }
             vc.title = "Trending Movies"
             return vc
@@ -31,7 +31,11 @@ class HomeCoordinator: NSObject,Coordinator {
         rootViewController.setViewControllers([homeViewController], animated: false)
     }
     
-    func goToDetails() {
-            
+    func goToDetails(row: Int) {
+        let detailViewController = DetailMovieViewController()
+        viewModel.row = row
+        detailViewController.viewModel = viewModel
+        detailViewController.title = viewModel.movies[row].original_name ?? viewModel.movies[row].original_title ?? viewModel.movies[row].name ?? ""
+        rootViewController.pushViewController(detailViewController, animated: true)
         }
 }

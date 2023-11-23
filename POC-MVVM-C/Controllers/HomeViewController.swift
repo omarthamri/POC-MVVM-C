@@ -11,7 +11,7 @@ import Combine
 class HomeViewController: UIViewController {
     
     var viewModel: HomeViewModel!
-    var showDetailRequest: () -> () = { }
+    var showDetailRequest: (_ row: Int) -> () = { row in }
     private var subscriptions: Set<AnyCancellable> = []
     private let moviesCollectionView: UICollectionView = {
             let layout = UICollectionViewFlowLayout()
@@ -115,6 +115,10 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
                 return 20
             }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        showDetailRequest(indexPath.row)
+    }
     
 
     

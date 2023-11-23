@@ -13,6 +13,7 @@ class HomeViewModel: ObservableObject {
     
     @Published var movies: [Movie] = []
     @Published var error: String?
+    var row: Int?
     
     func fetchTrendingMovies() {
        APICaller.shared.getTrendingMovies { [weak self] result in
