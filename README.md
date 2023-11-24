@@ -1,5 +1,5 @@
 # POC-MVVM-C
-POC-MVVM-C is a simple iOS application implemented using Swift, combine and TMDB API to present the usage of MVVM-C pattern.
+POC-MVVM-C is a simple iOS application implemented using Swift, combine and TMDB API to present the usage of MVVM-C (Model View ViewModel Coordinator) pattern.
 The app is available on both light mode and dark mode.
 ## Screenshots
 ### Light mode
